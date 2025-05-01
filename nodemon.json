@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "*.*"
+  ],
+  "ext": "html,css,js,json",
+  "ignore": [
+    "node_modules",
+    "dist"
+  ],
+  "restartable": "r",
+  "delay": "2500"
+}

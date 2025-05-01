@@ -1,5 +1,11 @@
 # ddl-sql
 
+```
+npm install electron --save-dev
+npm i nodemon -D
+ ```
+
+
 
 # 问题
 

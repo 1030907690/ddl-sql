@@ -4,12 +4,13 @@
   "description": "DDL SQL",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "NODEMON --exec electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Zhou Zhongqing",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^36.0.1"
+    "electron": "^36.0.1",
+    "nodemon": "^3.1.10"
   }
 }
