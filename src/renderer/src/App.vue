@@ -1,26 +1,83 @@
 <script setup lang="ts">
-import Versions from './components/Versions.vue'
+import { ref } from 'vue'
 
-const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+// const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+
+let tables = ref<string>('')
+let ddlSql = ref<string>('')
+
+
+const handleTable = ()=>{
+  console.log('table ' , tables.value)
+}
+
+ 
+
 </script>
 
 <template>
-  <img alt="logo" class="logo" src="./assets/electron.svg" />
-  <div class="creator">Powered by electron-vite</div>
-  <div class="text">
-    Build an Electron app with
-    <span class="vue">Vue</span>
-    and
-    <span class="ts">TypeScript</span>
-  </div>
-  <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
-  <div class="actions">
-    <div class="action">
-      <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">Documentation</a>
+   <div class="container">
+    <div class="from">
+      <el-text class="txt" size="large">填写表名：</el-text>
+      <el-input v-model="tables" type="textarea" />
+      <el-button @click="handleTable" type="primary">查询</el-button>
     </div>
-    <div class="action">
-      <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
+
+    <div class="gen">
+      <el-text class="txt" size="large">DDL SQL：</el-text>
+      <el-input v-model="ddlSql" type="textarea" />
     </div>
+    
   </div>
-  <Versions />
+
 </template>
+
+<style lang="scss" scoped>
+
+.container{
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .from{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    .txt{
+      align-self: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .el-textarea{
+      width: 95vw;
+      margin-bottom: 10px;
+    }
+  }
+
+  .gen{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+
+    .txt{
+      align-self: flex-start;
+      margin-bottom: 10px;
+    }
+
+    :deep(.el-textarea){
+      .el-textarea__inner{
+        width: 95vw;
+        height: 60vh;
+      }
+      
+    }
+
+
+  }
+}
+</style>
