@@ -1,6 +1,12 @@
 console.log("preload")
-const { contextBridge } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 
-contextBridge.exposeInMainWorld('myApi',{
-    version:  process.version
+contextBridge.exposeInMainWorld('myApi', {
+    version: process.version,
+    saveFile: (data) => {
+        ipcRenderer.send('file-save', data)
+    },
+    readFile() {
+        return ipcRenderer.invoke('file-read')
+    }
 })
