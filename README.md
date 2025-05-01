@@ -3,6 +3,7 @@
 ```
 npm install electron --save-dev
 npm i nodemon -D
+npm install electron-builder -D
  ```
 
 
