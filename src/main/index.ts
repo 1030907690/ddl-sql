@@ -24,7 +24,7 @@ ipcMain.handle('executeSql', (event, sql) => {
     getConnection().query(
       sql,
       function (err, results, fields) {
-        // console.log(results); // results contains rows returned by server
+        console.log(results,fields,err,event); // results contains rows returned by server
         resolve(results)
       }
     );

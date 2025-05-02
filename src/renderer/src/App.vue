@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 
-const api = window.api
+const api:any = window.api
 
 let tables = ref<string>('')
 let ddlSql = ref<string>('')
