@@ -1,9 +1,9 @@
 {
   "name": "ddl-sql",
   "version": "1.0.0",
-  "description": "An Electron application with Vue and TypeScript",
+  "description": "DDL SQL",
   "main": "./out/main/index.js",
-  "author": "example.com",
+  "author": "Zhou Zhongqing",
   "homepage": "https://electron-vite.org",
   "scripts": {
     "format": "prettier --write .",

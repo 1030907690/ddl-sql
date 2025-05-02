@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: ddl-sql
+appId: com.zzq.ddlsql
+productName: DDL-SQL
 directories:
   buildResources: build
 files:
@@ -12,12 +12,15 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: ddl-sql
+  executableName: DDL-SQL
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
+  allowToChangeInstallationDirectory: true
+  perMachine: true
+  oneClick: false
 mac:
   entitlementsInherit: build/entitlements.mac.plist
   extendInfo:
