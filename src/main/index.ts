@@ -3,6 +3,39 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
+
+const mysql2 = require('mysql2'); // 替换掉原来的require('mysql2')
+
+const connection = mysql2.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'jjjy181',
+});
+
+
+function getConnection() {
+    return connection;
+}
+
+ipcMain.handle('executeSql', (event, sql) => {
+  //此处是将callback转换成了Promise，也可以自行处理
+  return new Promise((resolve) => {
+    getConnection().query(
+      sql,
+      function (err, results, fields) {
+        // console.log(results); // results contains rows returned by server
+        resolve(results)
+      }
+    );
+
+  })
+
+})
+
+ 
+
+
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({

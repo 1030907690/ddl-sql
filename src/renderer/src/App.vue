@@ -3,12 +3,27 @@ import { ref } from 'vue'
 
 // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
 
+const api = window.api
+
 let tables = ref<string>('')
 let ddlSql = ref<string>('')
 
 
-const handleTable = ()=>{
+const handleTable = ():void =>{
   console.log('table ' , tables.value)
+  ddlSql.value = ""
+  const tabArr:string[] = tables.value.split(",")
+  tabArr.forEach(table =>{
+    api.executeSql('show create table '+table).then(res=>{
+      console.log("res ",res)
+      res.forEach(res =>{
+        const createDDL = res['Create Table']
+        console.log("createDDL ",createDDL)  
+        ddlSql.value += createDDL + ";\n\n"
+      })
+    })
+  })
+ 
 }
 
  
@@ -19,13 +34,13 @@ const handleTable = ()=>{
    <div class="container">
     <div class="from">
       <el-text class="txt" size="large">填写表名：</el-text>
-      <el-input v-model="tables" type="textarea" />
+      <el-input v-model="tables" type="textarea" placeholder="表名多个英文逗号分割"/>
       <el-button @click="handleTable" type="primary">查询</el-button>
     </div>
 
     <div class="gen">
       <el-text class="txt" size="large">DDL SQL：</el-text>
-      <el-input v-model="ddlSql" type="textarea" />
+      <el-input v-model="ddlSql" readonly="true" type="textarea" />
     </div>
     
   </div>
@@ -72,7 +87,7 @@ const handleTable = ()=>{
     :deep(.el-textarea){
       .el-textarea__inner{
         width: 95vw;
-        height: 60vh;
+        height: 80vh;
       }
       
     }
