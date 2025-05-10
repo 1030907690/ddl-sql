@@ -25,7 +25,8 @@
     "@electron-toolkit/utils": "^4.0.0",
     "electron-updater": "^6.3.9",
     "element-plus": "^2.9.9",
-    "mysql2": "^3.14.1"
+    "mysql2": "^3.14.1",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "3.0.0",
